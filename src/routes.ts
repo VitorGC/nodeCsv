@@ -48,6 +48,7 @@ router.post(
         }
 
         for await( let {cd_product, code_bar, description, weight, quantity} of products){
+            //const uniqueCd = cd_product
             await client.products.create({
                 data: {
                     cd_product,
@@ -58,9 +59,45 @@ router.post(
                 },
             });
         }
-
+        
         return response.json(products);
     }
 );
+
+router.get('/listProducts', async (req, res) => {
+    const listProducts = await client.products.findMany({
+    })
+    res.json(listProducts)
+});
+
+router.get('/searchProducts/:id', async (req, res) => {
+    const { id } = req.params
+    const searchProducts = await client.products.findFirst({
+        where: {
+            id: Number(id),
+        }
+    })
+    res.json(searchProducts)
+});
+/*
+router.put('/publish/:id', async (req, res) => {
+    const { id } = req.params
+    const post = await client.products.update({
+      where: { id: Number(id) },
+      data: { published: true },
+    })
+    res.json(post)
+});
+*/
+router.delete(`/delete/:id`, async (req, res) => {
+    const { id } = req.params
+    const post = await client.products.delete({
+      where: {
+        id: Number(id),
+      },
+    })
+    res.json(post)
+});
+
 
 export { router };

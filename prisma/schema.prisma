@@ -11,9 +11,9 @@ datasource db {
 }
 
 model Products {
-  id          String  @id   @default(uuid())
-  cd_product  String  @unique
-  code_bar    String  @unique
+  id          Int  @id @default(autoincrement())
+  cd_product  String
+  code_bar    String
   description String
   weight      Float
   quantity    Float
