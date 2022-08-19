@@ -12,10 +12,11 @@ datasource db {
 
 model Products {
   id          String  @id   @default(uuid())
-  code_bar    String
+  cd_product  String  @unique
+  code_bar    String  @unique
   description String
   weight      Float
-  quantity    Int
+  quantity    Float
 
   @@map("products")
 }

@@ -4,7 +4,7 @@ CREATE TABLE "products" (
     "code_bar" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "weight" DOUBLE PRECISION NOT NULL,
-    "quantity" INTEGER NOT NULL,
+    "quantity" DOUBLE PRECISION NOT NULL,
 
     CONSTRAINT "products_pkey" PRIMARY KEY ("id")
 );
